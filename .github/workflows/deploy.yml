@@ -27,7 +27,11 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-
+    - name: Set Terraform variables
+      env:
+        TF_VAR_service_principal_object_id: ${{ secrets.SERVICE_PRINCIPLE_OBJECT_ID }}  # Use a secret or env variable
+      run: |
+        echo "Service Principal Object ID set as a variable"
   
     - name: Terraform Init
       run: terraform init
@@ -38,12 +42,12 @@ jobs:
       run: terraform validate
       working-directory: ./Terraform-Keyvault
 
-    - name: Output Service Principal Object ID
-      run: |
-           echo "The Object ID of the Service Principal is: ${{ secrets.SERVICE_PRINCIPLE_OBJECT_ID }}"
+    #- name: Output Service Principal Object ID
+    #  run: |
+    #       echo "The Object ID of the Service Principal is: ${{ secrets.SERVICE_PRINCIPLE_OBJECT_ID }}"
 
     - name: Terraform Plan
-      run: terraform plan -out=tfplan
+      run: terraform plan -var="service_principal_object_id=${{ secrets.SERVICE_PRINCIPLE_OBJECT_ID }}" -out=tfplan
       working-directory: ./Terraform-Keyvault
 
    
