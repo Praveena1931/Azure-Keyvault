@@ -29,15 +29,12 @@ jobs:
 
     - name: Set Terraform variables
       env:
-        TF_VAR_service_principal_object_id: ${{ secrets.SERVICE_PRINCIPLE_OBJECT_ID }}  # Use a secret or env variable
+        TF_VAR_service_principal_object_id: ${{ secrets.SERVICE_PRINCIPLE_OBJECT_ID }}
+        TF_VAR_tenant_id: ${{ secrets.TENANT_ID }}  # Use a secret or env variable
       run: |
-        echo "Service Principal Object ID set as a variable"
+        echo "Service Principal Object ID and TENANT ID set as a variable"
   
-    - name: Set Terraform variables
-      env:
-        TF_VAR_tenant_id: ${{ secrets.TENANT_ID }}  # Use the GitHub secret for tenant ID
-      run: |
-        echo "Tenant ID set as a variable"
+    
     - name: Terraform Init
       run: terraform init
       working-directory: ./Terraform-Keyvault
@@ -52,7 +49,8 @@ jobs:
     #       echo "The Object ID of the Service Principal is: ${{ secrets.SERVICE_PRINCIPLE_OBJECT_ID }}"
 
     - name: Terraform Plan
-      run: terraform plan -var="service_principal_object_id=${{ secrets.SERVICE_PRINCIPLE_OBJECT_ID }}" -out=tfplan
+      run: terraform plan -var="service_principal_object_id=${{ secrets.SERVICE_PRINCIPLE_OBJECT_ID }}",
+       -var="tenant_id=${{ secrets.TENANT_ID }}" -out=tfplan
       working-directory: ./Terraform-Keyvault
 
    
