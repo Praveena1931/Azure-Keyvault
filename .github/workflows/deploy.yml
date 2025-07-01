@@ -27,6 +27,7 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
+
   
     - name: Terraform Init
       run: terraform init
@@ -46,3 +47,7 @@ jobs:
     - name: Terraform Apply
       run: terraform apply -auto-approve tfplan
       working-directory: ./Terraform-Keyvault
+
+    - name: Output Service Principal Object ID
+      run: |
+           echo "The Object ID of the Service Principal is: ${{ secrets.SERVICE_PRINCIPLE_OBJECT_ID }}"
