@@ -1,0 +1,5 @@
+resource_group_name           = "keyvault-resources"
+resource_group_location       = "West Europe"
+key_vault_name                = "Algorimsvault"
+#tenant_id                     = "${{secrets.TENANT_ID}}"
+#service_principal_object_id   = "${{secrets.SERVICE_PRINCIPLE_ID}}"
