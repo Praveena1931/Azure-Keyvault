@@ -21,7 +21,9 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      ENV: ${{ github.event.inputs.environment || 'dev' }}
+      ENV: ${{ github.event.inputs.environment || 'dev' }}    
+      TENANT_ID: ${{ secrets.TENANT_ID }}
+      SERVICE_PRINCIPLE_OBJECT_ID: ${{ secrets.SERVICE_PRINCIPLE_OBJECT_ID }}
 
     defaults:
       run:
