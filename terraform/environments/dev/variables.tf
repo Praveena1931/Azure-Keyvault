@@ -18,7 +18,7 @@ variable "tenant_id" {
   type        = string
 }
 
-variable "service_principal_object_id" {
+variable "service_principle_object_id" {
   description = "The Object ID of the Service Principal that needs access to the Key Vault"
   type        = string
 }

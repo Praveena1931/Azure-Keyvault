@@ -14,7 +14,7 @@ resource "azurerm_key_vault" "algorims" {
 
    access_policy {
     tenant_id = var.tenant_id
-    object_id = var.service_principal_object_id
+    object_id = var.service_principle_object_id
 
     key_permissions = [
       "Get",
