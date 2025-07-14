@@ -64,6 +64,8 @@ jobs:
           terraform plan -var-file="terraform.tfvars" -out=tfplan.binary
           terraform show -json tfplan.binary > plan.json
           echo "plan_created=true" >> $GITHUB_OUTPUT
+        env: 
+          SERVICE_PRINCIPLE_OBJECT_ID: ${{ secrets.SERVICE_PRINCIPLE_OBJECT_ID }}
 
       - name: Upload Terraform Plan Files
         uses: actions/upload-artifact@v4
