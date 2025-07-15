@@ -16,6 +16,7 @@ variable "key_vault_name" {
 variable "tenant_id" {
   description = "The Tenant ID for your Azure Active Directory"
   type        = string
+  default = "9c26bc1d-0dac-4b03-b3b2-4b19e2dcf202"
 }
 
 variable "service_principle_object_id" {
