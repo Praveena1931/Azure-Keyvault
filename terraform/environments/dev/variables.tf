@@ -21,4 +21,5 @@ variable "tenant_id" {
 variable "service_principle_object_id" {
   description = "The Object ID of the Service Principal that needs access to the Key Vault"
   type        = string
+  default = "2f78ed3c-cd44-4df3-afd4-f008899bf9ce"
 }
