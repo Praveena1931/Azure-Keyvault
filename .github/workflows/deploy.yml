@@ -58,6 +58,12 @@ jobs:
       - name: Terraform Validate
         run: terraform validate
 
+      - name: Write terraform.tfvars from GitHub Secrets
+        run: |
+             cat > terraform.tfvars <<EOF
+             service_principle_object_id = "${{ secrets.SERVICE_PRINCIPAL_OBJECT_ID }}"
+             EOF
+  
         env: 
           ENV: ${{ github.event.inputs.environment || 'dev' }}  
           TF_VAR_TENANT_ID: ${{ secrets.TENANT_ID }}
