@@ -60,8 +60,8 @@ jobs:
 
         env: 
           ENV: ${{ github.event.inputs.environment || 'dev' }}  
-          TENANT_ID: ${{ secrets.TENANT_ID }}
-          SERVICE_PRINCIPLE_OBJECT_ID: ${{ secrets.SERVICE_PRINCIPLE_OBJECT_ID }}
+          TF_VAR_TENANT_ID: ${{ secrets.TENANT_ID }}
+          TF_VAR_SERVICE_PRINCIPLE_OBJECT_ID: ${{ secrets.SERVICE_PRINCIPLE_OBJECT_ID }}
 
 
       - name: Terraform Plan
@@ -71,8 +71,8 @@ jobs:
           terraform show -json tfplan.binary > plan.json
           echo "plan_created=true" >> $GITHUB_OUTPUT
         env: 
-          TENANT_ID: ${{ secrets.TENANT_ID }}
-          SERVICE_PRINCIPLE_OBJECT_ID: ${{ secrets.SERVICE_PRINCIPLE_OBJECT_ID }}
+          TF_VAR_TENANT_ID: ${{ secrets.TENANT_ID }}
+          TF_VAR_SERVICE_PRINCIPLE_OBJECT_ID: ${{ secrets.SERVICE_PRINCIPLE_OBJECT_ID }}
 
       - name: Upload Terraform Plan Files
         uses: actions/upload-artifact@v4
