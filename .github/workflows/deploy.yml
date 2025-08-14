@@ -63,11 +63,11 @@ jobs:
              cat > terraform.tfvars <<EOF
              service_principle_object_id = "${{ secrets.SERVICE_PRINCIPAL_OBJECT_ID }}"
              EOF
-  
-        env: 
-          ENV: ${{ github.event.inputs.environment || 'dev' }}  
-          TF_VAR_TENANT_ID: ${{ secrets.TENANT_ID }}
-          TF_VAR_SERVICE_PRINCIPLE_OBJECT_ID: ${{ secrets.SERVICE_PRINCIPLE_OBJECT_ID }}
+    
+        # env: 
+        #   ENV: ${{ github.event.inputs.environment || 'dev' }}  
+        #   TF_VAR_TENANT_ID: ${{ secrets.TENANT_ID }}
+        #   TF_VAR_SERVICE_PRINCIPLE_OBJECT_ID: ${{ secrets.SERVICE_PRINCIPLE_OBJECT_ID }}
 
 
       - name: Terraform Plan
